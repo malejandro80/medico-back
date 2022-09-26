@@ -1,9 +1,15 @@
+import { InjectModel } from '@nestjs/mongoose';
+import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
 import { userEntity } from 'src/modules/users/domain/entities/user.entity';
 import { userRepository } from '../../../domain/repositories/user.repository';
-class userRepositoryAdapter implements userRepository {
-  constructor(parameters) {}
-  create(user: userEntity): Promise<userEntity> {
-    throw new Error('Method not implemented.');
+import { User, UserSchema } from './schemas/user.schema';
+
+@Injectable()
+export class userRepositoryAdapter implements userRepository {
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  async create(user: userEntity): Promise<userEntity> {
+    return await this.userModel.create(user);
   }
   findById(uuid: string): Promise<userEntity> {
     throw new Error('Method not implemented.');
