@@ -4,12 +4,15 @@ import { Model } from 'mongoose';
 import { userEntity } from 'src/modules/users/domain/entities/user.entity';
 import { userRepository } from '../../../domain/repositories/user.repository';
 import { User, UserSchema } from './schemas/user.schema';
+import { userValue } from 'src/modules/users/domain/valueObjects/user.value';
 
 @Injectable()
 export class userRepositoryAdapter implements userRepository {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
   async create(user: userEntity): Promise<userEntity> {
-    return await this.userModel.create(user);
+    const newUser = new userValue(user);
+    await this.userModel.create(newUser);
+    return newUser;
   }
   findById(uuid: string): Promise<userEntity> {
     throw new Error('Method not implemented.');
