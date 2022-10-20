@@ -21,7 +21,7 @@ import config from './config';
         DB_PORT: Joi.number().required(),
       }),
     }),
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/medico'),
+    MongooseModule.forRoot(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`),
     UsersModule,
     AuthorizationModule,
     ConfigModule.forRoot({ isGlobal: true }),
