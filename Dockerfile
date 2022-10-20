@@ -2,12 +2,11 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
-COPY yarn.lock ./
-COPY . .
-
+ADD package.json /app/package.json
+RUN npm config set registry http://registry.npmjs.org
 RUN yarn install
-
+ADD . /app
+EXPOSE 3000
 #EXPOSE 3001
 
-CMD [ "yarn", "start:dev" ]
+CMD ["npm", "run", "start"]
