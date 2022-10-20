@@ -2,23 +2,23 @@ version: '3.7'
 
 services:
 
-  app:
-    env_file:
-      - .env
-    container_name: medicoapp
-    restart: always
-    build: .
-    ports:
-      - "3001:3000"
-    volumes:
-      - ./src:/app/src
-    links:
-      - mongo
-    networks:
-      - medicoapp_network
+#  app:
+#    env_file:
+#      - .env
+#    container_name: ${APP_NAME}_app
+#    restart: always
+#    build: .
+#    ports:
+#      - "3001:3000"
+#    volumes:
+#      - ./src:/app/src
+#    links:
+#      - mongo
+#    networks:
+#      - medicoapp_network
 
   mongo:
-    container_name: medicoapp_mongodb
+    container_name: ${APP_NAME}_mongodb
     image: mongo:6.0
     restart: always
     ports:
@@ -26,7 +26,7 @@ services:
     environment:
       - MONGODB_DATABASE=${DB_NAME}
     volumes:
-      - ./docker/data/mongodb:/data/bd
+      - ./data/mongodb:/data/bd
     networks:
       - medicoapp_network
   
