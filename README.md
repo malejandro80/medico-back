@@ -32,6 +32,7 @@
 $ npm install
 ```
 
+
 ## Running the app
 
 ```bash
@@ -43,6 +44,36 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+
+## Setting Up the Database
+
+### Using make file Commands or Docker compose
+
+```bash
+# Help about available commands
+make help
+
+# Start The containers
+make up
+docker compose up -d --build
+
+# Stop The containers
+make stop
+docker compose stop
+
+# Down The containers
+make down
+docker compose down
+
+# Restart de containers
+make restart
+docker-compose stop && docker compose up --build
+
+# make commands inside the mongodb container
+make mongo
+docker exec -it $(CONTAINER_MONGODB) mongosh
+
 ```
 
 ## Test

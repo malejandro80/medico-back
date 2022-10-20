@@ -27,4 +27,4 @@ bash: ## Allow to run nginx server commands
 	docker exec -it $(CONTAINER_NGINX) bash
 
 mongo: ## Allow to run mongodb comands
-	docker exec -it $(CONTAINER_MONGODB) mongo
+	docker exec -it $(CONTAINER_MONGODB) mongosh
