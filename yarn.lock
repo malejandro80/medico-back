@@ -801,12 +801,12 @@
     "path-to-regexp" "3.2.0"
     "swagger-ui-dist" "4.14.0"
 
-"@nestjs/testing@^9.0.0":
-  "integrity" "sha512-tT+yj3av7ZJb9Cy09C4+FoUULvzUntf81g5eK5shRVeQ35RWqr7E5Uq77B7ePUF2Er/TictVZk43d7rKq1ClNA=="
-  "resolved" "https://registry.npmjs.org/@nestjs/testing/-/testing-9.0.11.tgz"
-  "version" "9.0.11"
+"@nestjs/testing@^9.4.3":
+  "integrity" "sha512-LDT8Ai2eKnTzvnPaJwWOK03qTaFap5uHHsJCv6dL0uKWk6hyF9jms8DjyVaGsaujCaXDG8izl1mDEER0OmxaZA=="
+  "resolved" "https://registry.npmjs.org/@nestjs/testing/-/testing-9.4.3.tgz"
+  "version" "9.4.3"
   dependencies:
-    "tslib" "2.4.0"
+    "tslib" "2.5.3"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -5188,6 +5188,11 @@
   "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
   "version" "2.4.0"
+
+"tslib@2.5.3":
+  "integrity" "sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.5.3.tgz"
+  "version" "2.5.3"
 
 "tsutils@^3.21.0":
   "integrity" "sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA=="

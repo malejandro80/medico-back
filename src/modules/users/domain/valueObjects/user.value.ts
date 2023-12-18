@@ -14,7 +14,6 @@ export class userValue implements userEntity {
   constructor(user: userEntity) {
     Object.assign(this, user);
     this.uuid = uuidv4();
-    // this.password = bcrypt.hash(user.password, saltOrRounds);
-    this.password = '1223'
+    // this.password = await bcrypt.hash(user.password, saltOrRounds);
   }
 }
