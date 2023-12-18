@@ -5,4 +5,5 @@ export interface userEntity {
   email: string;
   countryCode: number;
   phone: number;
+  password:string
 }

@@ -14,7 +14,7 @@ services:
     links:
       - mongo
     networks:
-      - medicoapp_network
+      - win_network
     depends_on:
       - mongo
   mongo:
@@ -28,9 +28,8 @@ services:
     volumes:
       - ./data/mongodb:/data/bd
     networks:
-      - medicoapp_network
+      - win_network
 
 networks:
-  medicoapp_network:
-    external: true
-    driver: overlay
+  win_network:
+    driver: bridge

@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { HelloController } from './hello.controller';
 import * as Joi from 'joi';
 import { enviroments } from './enviroments';
+import { AuthModule } from './auth/auth.module';
 import config from './config';
 
 @Module({
@@ -25,6 +26,7 @@ import config from './config';
     UsersModule,
     AuthorizationModule,
     ConfigModule.forRoot({ isGlobal: true }),
+    AuthModule,
   ],
   controllers: [HelloController],
   providers: [],

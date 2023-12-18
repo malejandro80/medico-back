@@ -9,10 +9,10 @@ import { userValue } from 'src/modules/users/domain/valueObjects/user.value';
 @Injectable()
 export class userRepositoryAdapter implements userRepository {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
-  async create(user: userEntity): Promise<userEntity> {
+  async create(user: userEntity) {
     const newUser = new userValue(user);
-    await this.userModel.create(newUser);
-    return newUser;
+    const res = await this.userModel.create(newUser);
+    return {resp:newUser,result:'newUser' };
   }
   findById(uuid: string): Promise<userEntity> {
     throw new Error('Method not implemented.');

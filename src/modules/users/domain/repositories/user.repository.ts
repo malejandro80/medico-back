@@ -1,6 +1,6 @@
 import { userEntity } from '../entities/user.entity';
 
 export interface userRepository {
-  create(user: userEntity): Promise<userEntity | null>;
+  create(user: userEntity);
   findById(uuid: string): Promise<userEntity | null>;
 }
