@@ -13,5 +13,6 @@ import { userRepositoryAdapter } from './infrastructure/adapters/mongo/user.repo
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
   providers: [userRepositoryAdapter],
+  exports: [userRepositoryAdapter],
 })
 export class UsersModule {}

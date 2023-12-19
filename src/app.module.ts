@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 
 import { MongooseModule } from '@nestjs/mongoose';
-import { UsersModule } from './modules/users/users.module';
-import { AuthorizationModule } from './modules/authorization/authorization.module';
+import { UsersModule } from './users/users.module';
+import { AuthorizationModule } from './authorization/authorization.module';
 import { ConfigModule } from '@nestjs/config';
 import { HelloController } from './hello.controller';
 import * as Joi from 'joi';

@@ -1,18 +1,23 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { userRepositoryAdapter } from 'src/users/infrastructure/adapters/mongo/user.repository.adapter';
 
 @Injectable()
 export class AuthService {
-  constructor() {}
+  constructor(
+    private jwtService: JwtService,
+    private userAdapter: userRepositoryAdapter,
+  ) {}
 
-  async signIn(username: string, pass: string): Promise<any> {
-    throw new UnauthorizedException();
-    // const user = await this.usersService.findOne(username);
+  async signIn(email: string, pass: string): Promise<any> {
+    const user = await this.userAdapter.findByEmail(email);
     // if (user?.password !== pass) {
     //   throw new UnauthorizedException();
     // }
-    // const { password, ...result } = user;
-    // // TODO: Generate a JWT and return it here
-    // // instead of the user object
-    // return result;
+    const payload = { id: user.uuid, email: user.email };
+    return {
+      access_token: await this.jwtService.signAsync(payload),
+      expire: 1000 * 60 * 60 * 60,
+    };
   }
 }
