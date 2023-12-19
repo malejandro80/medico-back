@@ -11,12 +11,12 @@ export class AuthService {
 
   async signIn(email: string, pass: string): Promise<any> {
     const user = await this.userAdapter.findByEmail(email);
-    // if (user?.password !== pass) {
-    //   throw new UnauthorizedException();
-    // }
+    if (user?.password !== pass) {
+      throw new UnauthorizedException();
+    }
     const payload = { id: user.uuid, email: user.email };
     return {
-      access_token: await this.jwtService.signAsync(payload),
+      access_token:`Bearer ${await this.jwtService.signAsync(payload)}`,
       expire: 1000 * 60 * 60 * 60,
     };
   }

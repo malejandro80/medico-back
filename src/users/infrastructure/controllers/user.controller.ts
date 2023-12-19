@@ -1,6 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Get } from '@nestjs/common';
 import { userEntity } from '../../domain/entities/user.entity';
 import { userRepositoryAdapter } from '../adapters/mongo/user.repository.adapter';
+import { Public } from '../../../shared/decorators/auth';
 // import { AuthorizationGuard } from '../../../authorization/authorization.guard';
 
 @Controller({
@@ -13,7 +14,13 @@ export class UserController {
 
   @Post()
   // @UseGuards(AuthorizationGuard)
-  async create(@Body() req: userEntity){
+  async create(@Body() req: userEntity) {
     return await this.userAdapter.create(req);
+  }
+  
+  @Public()
+  @Get()
+  async getAll() {
+    return await this.userAdapter.getAll();
   }
 }

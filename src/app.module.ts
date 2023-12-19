@@ -9,6 +9,8 @@ import * as Joi from 'joi';
 import { enviroments } from './enviroments';
 import { AuthModule } from './auth/auth.module';
 import config from './config';
+import { AuthGuard } from './auth/auth.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -29,6 +31,11 @@ import config from './config';
     AuthModule,
   ],
   controllers: [HelloController],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}

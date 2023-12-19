@@ -19,6 +19,10 @@ export class userRepositoryAdapter implements userRepository {
     return { resp: res, result: 'newUser' };
   }
 
+  async getAll() {
+    return  await this.userModel.find();
+  }
+
   findById(uuid: string): Promise<userEntity> {
     throw new Error('Method not implemented.');
   }
@@ -26,7 +30,7 @@ export class userRepositoryAdapter implements userRepository {
   async findByEmail(email: string): Promise<userEntity> {
     const query = this.userModel.where({ email });
     const user = await query.findOne();
-    if (!user)throw new Error('not found');
+    if (!user) throw new Error('not found');
     return user;
   }
 }
