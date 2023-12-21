@@ -26,10 +26,13 @@ services:
     environment:
       - MONGODB_DATABASE=${DB_NAME}
     volumes:
-      - ./data/mongodb:/data/bd
+      - .mongodb_data:/data/bd
     networks:
       - win_network
 
+volumes:
+  mongodb_data:
+  
 networks:
   win_network:
     driver: bridge

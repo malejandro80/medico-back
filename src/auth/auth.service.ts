@@ -1,6 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { userRepositoryAdapter } from 'src/users/infrastructure/adapters/mongo/user.repository.adapter';
+import * as bcryptjs from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
@@ -11,12 +12,13 @@ export class AuthService {
 
   async signIn(email: string, pass: string): Promise<any> {
     const user = await this.userAdapter.findByEmail(email);
-    if (user?.password !== pass) {
+
+    if (!(await bcryptjs.compare(pass.toString(), user?.password))) {
       throw new UnauthorizedException();
     }
     const payload = { id: user.uuid, email: user.email };
     return {
-      access_token:`Bearer ${await this.jwtService.signAsync(payload)}`,
+      access_token: `Bearer ${await this.jwtService.signAsync(payload)}`,
       expire: 1000 * 60 * 60 * 60,
     };
   }

@@ -11,14 +11,13 @@ export class UserController {
   // private readonly logger = new Logger(TicketController.name);
 
   constructor(private userAdapter: userRepositoryAdapter) {}
-
-  @Post()
+  @Public()
+  @Post('register')
   // @UseGuards(AuthorizationGuard)
   async create(@Body() req: userEntity) {
     return await this.userAdapter.create(req);
   }
-  
-  @Public()
+
   @Get()
   async getAll() {
     return await this.userAdapter.getAll();

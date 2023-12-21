@@ -1,10 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { AuthGuard } from './auth/auth.guard';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.setGlobalPrefix('api/v1');
 
   const config = new DocumentBuilder()
     .setTitle('API')
@@ -15,7 +16,6 @@ async function bootstrap() {
   SwaggerModule.setup('docs', app, document);
 
   // here we guard the whole application with one Guard
-  app.useGlobalGuards(new AuthGuard());
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

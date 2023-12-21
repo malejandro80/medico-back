@@ -8,9 +8,8 @@ import { HelloController } from './hello.controller';
 import * as Joi from 'joi';
 import { enviroments } from './enviroments';
 import { AuthModule } from './auth/auth.module';
+import { CouponsModule } from './coupons/coupons.module';
 import config from './config';
-import { AuthGuard } from './auth/auth.guard';
-import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -29,13 +28,9 @@ import { APP_GUARD } from '@nestjs/core';
     AuthorizationModule,
     ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,
+    CouponsModule,
   ],
   controllers: [HelloController],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
-  ],
+  providers: [],
 })
 export class AppModule {}
