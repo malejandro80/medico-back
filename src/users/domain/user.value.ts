@@ -1,4 +1,4 @@
-import { userEntity } from '../entities/user.entity';
+import { userEntity } from './user.entity';
 import { v4 as uuidv4 } from 'uuid';
 import  * as bcrypt from "bcrypt";
 const saltOrRounds = 10;

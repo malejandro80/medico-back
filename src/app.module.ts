@@ -1,15 +1,16 @@
 import { Module } from '@nestjs/common';
 
-import { MongooseModule } from '@nestjs/mongoose';
-import { UsersModule } from './users/users.module';
-import { AuthorizationModule } from './authorization/authorization.module';
 import { ConfigModule } from '@nestjs/config';
-import { HelloController } from './hello.controller';
+import { MongooseModule } from '@nestjs/mongoose';
 import * as Joi from 'joi';
-import { enviroments } from './enviroments';
 import { AuthModule } from './auth/auth.module';
-import { CouponsModule } from './coupons/coupons.module';
+import { AuthorizationModule } from './authorization/authorization.module';
 import config from './config';
+import { CouponsModule } from './coupons/coupons.module';
+import { enviroments } from './enviroments';
+import { HelloController } from './hello.controller';
+import { UserService } from './users/application/user.service';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -31,6 +32,6 @@ import config from './config';
     CouponsModule,
   ],
   controllers: [HelloController],
-  providers: [],
+  providers: [UserService],
 })
 export class AppModule {}

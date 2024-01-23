@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { userRepositoryAdapter } from 'src/users/infrastructure/adapters/mongo/user.repository.adapter';
+import { userRepositoryAdapter } from 'src/users/infrastructure/user.repository.adapter';
 import * as bcryptjs from 'bcryptjs';
 
 @Injectable()

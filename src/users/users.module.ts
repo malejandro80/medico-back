@@ -3,9 +3,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import {
   UserSchema,
   User,
-} from './infrastructure/adapters/mongo/schemas/user.schema';
-import { UserController } from './infrastructure/controllers/user.controller';
-import { userRepositoryAdapter } from './infrastructure/adapters/mongo/user.repository.adapter';
+} from './infrastructure/user.schema';
+import { UserController } from './infrastructure/user.controller';
+import { userRepositoryAdapter } from './infrastructure/user.repository.adapter';
+import { UserService } from './application/user.service';
 
 @Module({
   controllers: [UserController],
@@ -14,6 +15,7 @@ import { userRepositoryAdapter } from './infrastructure/adapters/mongo/user.repo
   ],
   providers: [
     userRepositoryAdapter,
+    UserService
   ],
   exports: [userRepositoryAdapter],
 })
