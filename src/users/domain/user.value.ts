@@ -1,7 +1,5 @@
 import { userEntity } from './user.entity';
 import { v4 as uuidv4 } from 'uuid';
-import  * as bcrypt from "bcrypt";
-const saltOrRounds = 10;
 export class userValue implements userEntity {
   uuid: string;
   name: string;
