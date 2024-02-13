@@ -1,7 +1,7 @@
 import { userEntity } from './user.entity';
 import { v4 as uuidv4 } from 'uuid';
 export class userValue implements userEntity {
-  uuid: string;
+  _id: string;
   name: string;
   lastName: string;
   email: string;
@@ -11,6 +11,6 @@ export class userValue implements userEntity {
 
   constructor(user: userEntity) {
     Object.assign(this, user);
-    this.uuid = uuidv4();
+    this._id = uuidv4();
   }
 }

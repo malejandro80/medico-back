@@ -6,7 +6,7 @@ export type UserSchemaDocument = User & Document;
 @Schema()
 export class User {
   @Prop()
-  uuid: string;
+  _id: string;
 
   @Prop()
   name: string;

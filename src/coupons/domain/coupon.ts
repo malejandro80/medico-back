@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export interface couponEntity {
-  uuid: string;
+  _id: string;
   title: string;
   description: string;
   type: string;
@@ -11,7 +11,7 @@ export interface couponEntity {
 }
 
 export class coupon implements couponEntity {
-  uuid: string;
+  _id: string;
   title: string;
   description: string;
   type: string;
@@ -20,9 +20,9 @@ export class coupon implements couponEntity {
   location: [number, number];
 
   constructor(coupon: couponEntity) {
-    if (!coupon.uuid) {
+    if (!coupon._id) {
       Object.assign(this, coupon);
-      this.uuid = uuidv4();
+      this._id = uuidv4();
     }
   }
 }

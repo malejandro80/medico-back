@@ -20,7 +20,7 @@ export class userRepositoryAdapter implements userRepository {
     return await this.userModel.find();
   }
 
-  findById(uuid: string): Promise<userEntity> {
+  findById(_id: string): Promise<userEntity> {
     throw new Error('Method not implemented.');
   }
 

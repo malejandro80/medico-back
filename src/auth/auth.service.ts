@@ -16,7 +16,7 @@ export class AuthService {
     if (!(await bcryptjs.compare(pass.toString(), user?.password))) {
       throw new UnauthorizedException();
     }
-    const payload = { id: user.uuid, email: user.email };
+    const payload = { id: user._id, email: user.email };
     return {
       access_token: `Bearer ${await this.jwtService.signAsync(payload)}`,
       expire: 1000 * 60 * 60 * 60,

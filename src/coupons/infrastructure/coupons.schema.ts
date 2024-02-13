@@ -3,7 +3,7 @@ import { couponEntity } from '../domain/coupon';
 
 export const couponSchema = new Schema<couponEntity>(
   {
-    uuid: { type: String, required: true },
+    _id: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String },
     type: { type: String, required: true },
