@@ -10,4 +10,8 @@ export class CouponsService {
     const newCoupon = new couponModel(coupon);
     return this.couponAdapter.create(newCoupon);
   }
+
+  searchCoupons(location: number[], radius: number) {
+    return this.couponAdapter.getCoupons(location,radius);
+  }
 }

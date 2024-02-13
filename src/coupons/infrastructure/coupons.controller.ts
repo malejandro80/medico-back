@@ -1,8 +1,11 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { CouponModel } from './coupons.schema';
-import { Model } from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
-import { InjectModel } from '@nestjs/mongoose';
+import {
+  Body,
+  Controller,
+  Post,
+  Get,
+  Query,
+  ParseArrayPipe,
+} from '@nestjs/common';
 import { couponEntity } from '../domain/coupon';
 import { CouponsService } from '../application/coupons.service';
 import { Public } from 'src/shared/decorators/auth';
@@ -13,9 +16,15 @@ export class CouponsController {
   @Public()
   @Post('create')
   async create(@Body() req: couponEntity) {
-    // const res = await this.couponModel.create({ uuid: uuidv4(), ...req });
     return await this.couponsService.saveNewCoupon(req);
-    // return { resp: res, result: 'coupon created' };
-    // return await this.userAdapter.create(req);
+  }
+  @Public()
+  @Get()
+  async getCoupons(
+    @Query('location', new ParseArrayPipe({ items: Number, separator: ',' }))
+    location: number[],
+    @Query('radius') radius: number,
+  ) {
+    return await this.couponsService.searchCoupons(location, radius);
   }
 }

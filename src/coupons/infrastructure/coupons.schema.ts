@@ -14,7 +14,6 @@ export const couponSchema = new Schema<couponEntity>(
   { timestamps: true, collection: 'coupons' },
 );
 
-// 3. Create a Model.
 
 export const CouponModel = mongoose.model<couponEntity>(
   'coupons',

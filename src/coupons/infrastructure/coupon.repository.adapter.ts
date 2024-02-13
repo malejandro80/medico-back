@@ -4,7 +4,6 @@ import { Model } from 'mongoose';
 import { couponRepository } from '../domain/coupon.repository';
 import { couponEntity } from '../domain/coupon';
 import { CouponModel } from './coupons.schema';
-import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class couponRepositoryAdapter implements couponRepository {
@@ -17,7 +16,14 @@ export class couponRepositoryAdapter implements couponRepository {
   findById(uuid: string): Promise<couponEntity> {
     throw new Error('Method not implemented.');
   }
-  getCoupons(rad: number): Promise<couponEntity[]> {
-    throw new Error('Method not implemented.');
+  async getCoupons(location: number[], rad: number): Promise<couponEntity[]> {
+    return await this.couponModel.find({
+      location: {
+        $nearSphere: {
+          $geometry: { type: 'Point', coordinates: location },
+          $maxDistance: rad,
+        },
+      },
+    });
   }
 }
